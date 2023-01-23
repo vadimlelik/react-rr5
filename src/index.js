@@ -1,17 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom'
+import About from './Pages/About';
+import UsersPage from './Pages/Users';
+import CustomLink from './CustomLink';
+import User from './Pages/User';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  <BrowserRouter>
+    <React.StrictMode>
+      <div>
+        <ul style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', listStyle: 'none' }} >
+          <li>
+            <CustomLink activeOnlyWhenExact={true} to='/' label='App' />
+          </li>
+          <li>
+            <CustomLink activeOnlyWhenExact={true} to='/about' label='About' />
+          </li>
+          <li>
+            <CustomLink activeOnlyWhenExact={true} to="/users" label='Users' />
+          </li>
+        </ul>
+      </div>
+      <Switch>
+        <Route path={'/'} exact >
+          <App />
+        </Route>
+        <Route path={'/about'}  >
+          <About />
+        </Route>
+        <Route path={'/users'} exact  >
+          <UsersPage />
+        </Route>
+        <Route path={'/users:userId?'}  >
+          <User />
+        </Route>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        {/* <Route path={'*'}  >
+          <Redirect to='/' exact />
+        </Route> */}
+      </Switch>
+    </React.StrictMode>
+  </BrowserRouter>
+
+);
