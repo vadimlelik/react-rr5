@@ -1,5 +1,7 @@
 import About from './Pages/About';
 import Home from './Pages/Home';
+import User from './Pages/User';
+import UsersPage from './Pages/Users';
 
 
 export const routes = [
@@ -15,13 +17,18 @@ export const routes = [
 		breadcrumbName: 'About',
 
 	},
+	{
+		path: "/users/:uId?",
+		component: UsersPage,
+		breadcrumbName: 'UsersPage',
+		// routes: [
+		// 	{
+		// 		path: '/users/:userId?',
+		// 		component: UsersPage
+		// 	}
 
-
-	// {
-	// 	path: "/uesrs",
-	// 	component: UsersPage,
-	// 	breadcrumbName: 'UsersPage'
-	// },
+		// ]
+	},
 	// {
 	// 	path: `/electronics`,
 	// 	component: Electronics,

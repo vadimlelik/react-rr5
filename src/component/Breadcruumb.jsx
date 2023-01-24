@@ -5,10 +5,9 @@ import { routes } from "../routes";
 
 const Breadcruumb = ({ locationPath, onMatchedRoutes }) => {
     let matchedRoutes = matchRoutes(routes, locationPath);
-    console.log(matchedRoutes);
 
     if (typeof onMatchedRoutes === "function") {
-        matchedRoutes = onMatchedRoutes(matchRoutes);
+        matchedRoutes = onMatchedRoutes(matchedRoutes);
     }
 
     return (
@@ -17,6 +16,7 @@ const Breadcruumb = ({ locationPath, onMatchedRoutes }) => {
                 {matchedRoutes.map((matchRoute, i) => {
                     const { path, breadcrumbName } = matchRoute.route;
                     const isActive = path === locationPath;
+                    console.log(path);
                     return isActive ? (
                         <li key={i} className="breadcrumb-item active">
                             {breadcrumbName}

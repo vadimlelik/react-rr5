@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import Breadcruumb from "../component/Breadcruumb";
 
-const User = () => {
+const User = ({ userId }) => {
     const [userData, setUserData] = useState();
-    const params = useParams();
-    const { userId } = params;
+    const { pathname } = useLocation();
+
     const getUserId = async () => {
         const response = await fetch(
             `https://jsonplaceholder.typicode.com/users/${userId}`
@@ -16,10 +17,13 @@ const User = () => {
     useEffect(() => {
         getUserId();
     }, [userId]);
+
     return (
         <>
             {userData && (
                 <>
+                    <h1>UserPage</h1>
+                    <Breadcruumb locationPath={pathname} />
                     <div>{userData.username}</div>
                 </>
             )}

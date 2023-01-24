@@ -4,7 +4,7 @@ import Breadcruumb from "../component/Breadcruumb";
 const Home = ({ location }) => {
     return (
         <>
-            <Breadcruumb locationPath={location} />
+            <Breadcruumb locationPath={location.pathname} />
             <h1> Home</h1>
         </>
     );
