@@ -16,8 +16,15 @@ const User = () => {
     useEffect(() => {
         getUserId();
     }, [userId]);
-    console.log(userData);
-    return <>{userData && <div>{userData.username}</div>}</>;
+    return (
+        <>
+            {userData && (
+                <>
+                    <div>{userData.username}</div>
+                </>
+            )}
+        </>
+    );
 };
 
 export default User;

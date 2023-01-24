@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import User from "../Pages/User";
 
 const UsersPage = () => {
     const [users, setUsers] = useState([]);

@@ -1,7 +1,15 @@
 import React from "react";
+import { useLocation } from "react-router";
+import Breadcruumb from "./Breadcruumb";
 
 const UsersList = (props) => {
-    return <div>{props.name}</div>;
+    let location = useLocation();
+    return (
+        <>
+            <Breadcruumb locationPath={location} />
+            <div>{props.name}</div>
+        </>
+    );
 };
 
 export default UsersList;
